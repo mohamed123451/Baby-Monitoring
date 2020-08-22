@@ -23,7 +23,7 @@ bool  notReset              = true;
 String   phone_number1 = "+ZZxxxxxxxxxx";    //change ZZ with country code and xxxxxxxxxxx with phone number to sms
 
 //Create software serial object to communicate with SIM800L
-SoftwareSerial mySerial(D3, D2); //SIM800L Tx & Rx is connected to Arduino #D3 & #D2
+SoftwareSerial mySerial(8, 9); //SIM800L Tx & Rx is connected to Arduino #8 & #9
 
 
 void setup() {
@@ -34,7 +34,9 @@ void setup() {
   pinMode(SoundSensorPin,     INPUT);
   pinMode(PIRMotionSensorPin, INPUT);
   pinMode(LedPin,             OUTPUT);
-  pinMode(LedPin,             OUTPUT);
+  digitalWrite(LedPin,        LOW);
+  sendSMS("the device reset", phone_number1);
+
 }
 
 void loop() {
